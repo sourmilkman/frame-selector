@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="Try miniature artwork in Polymers Plus frames.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>Miniature Frame Selector</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header>
+      <div><p class="eyebrow">POLYMERS PLUS LIBRARY</p><h1>Miniature<br>Frame Selector</h1></div>
+      <span id="build" class="build">BUILD · …</span>
+    </header>
+
+    <section class="stage-card" aria-label="Artwork visualizer">
+      <canvas id="visualizer" width="1000" height="1000"></canvas>
+      <div class="stage-status" id="stageStatus">Choose artwork to begin</div>
+    </section>
+
+    <section class="controls">
+      <div class="input-row">
+        <label class="button primary">Use camera<input id="cameraInput" type="file" accept="image/*" capture="environment"></label>
+        <label class="button">Upload image<input id="fileInput" type="file" accept="image/*"></label>
+      </div>
+      <p id="fitNote" class="hint">Artwork will be edge-detected and fitted automatically.</p>
+      <div class="slider-grid">
+        <label>Scale <input id="scale" type="range" min="0.5" max="2.5" step="0.01" value="1"></label>
+        <label>Horizontal <input id="offsetX" type="range" min="-1" max="1" step="0.01" value="0"></label>
+        <label>Vertical <input id="offsetY" type="range" min="-1" max="1" step="0.01" value="0"></label>
+      </div>
+      <button class="button save" id="saveSelection">Save selection on this device</button>
+    </section>
+
+    <section class="library">
+      <div class="section-head"><div><p class="eyebrow">169 LOCAL ASSETS</p><h2>Frame library</h2></div><select id="familyFilter" aria-label="Filter frame family"><option value="all">All families</option></select></div>
+      <div id="gallery" class="gallery" aria-live="polite"></div>
+    </section>
+  </main>
+  <template id="frameTemplate"><button class="frame-tile"><img loading="lazy"><span class="tile-label"></span><span class="tile-family"></span></button></template>
+  <script src="app.js"></script>
+</body>
+</html>
