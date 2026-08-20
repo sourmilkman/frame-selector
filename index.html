@@ -8,13 +8,14 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon.svg">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fixes.css">
   <title>Miniature Frame Selector</title>
 </head>
 <body>
   <main class="app-shell">
     <header>
       <div><p class="eyebrow">POLYMERS PLUS LIBRARY</p><h1>Miniature<br>Frame Selector</h1></div>
-      <span id="build" class="build">BUILD · …</span>
+      <div class="header-actions"><button class="basket-button" id="openReview">Review <span id="basketCount">0</span></button><span id="build" class="build">BUILD · …</span></div>
     </header>
 
     <section class="stage-card" aria-label="Artwork visualizer">
@@ -33,7 +34,12 @@
         <label>Horizontal <input id="offsetX" type="range" min="-1" max="1" step="0.01" value="0"></label>
         <label>Vertical <input id="offsetY" type="range" min="-1" max="1" step="0.01" value="0"></label>
       </div>
-      <button class="button save" id="saveSelection">Save selection on this device</button>
+      <div class="dimension-row">
+        <label>Required aperture width <span><input id="apertureWidth" type="number" inputmode="decimal" min="1" step="0.1" placeholder="—"> mm</span></label>
+        <label>Required aperture height <span><input id="apertureHeight" type="number" inputmode="decimal" min="1" step="0.1" placeholder="—"> mm</span></label>
+      </div>
+      <button class="button primary select-frame" id="selectFrame">Select this frame</button>
+      <p class="selection-note" id="selectionNote" aria-live="polite"></p>
     </section>
 
     <section class="library">
@@ -41,6 +47,21 @@
       <div id="gallery" class="gallery" aria-live="polite"></div>
     </section>
   </main>
+  <dialog id="reviewDialog" class="sheet">
+    <div class="sheet-head"><div><p class="eyebrow">YOUR SHORTLIST</p><h2>Selected frames</h2></div><button class="icon-button" data-close="reviewDialog" aria-label="Close review">×</button></div>
+    <div id="reviewEmpty" class="empty-state">Select a framed preview and it will appear here.</div>
+    <div id="reviewList" class="review-list"></div>
+    <button id="readyToOrder" class="button primary order-button">Ready to order</button>
+    <section id="orderPanel" class="order-panel" hidden>
+      <p class="eyebrow">PHONE ORDER</p><h2>Your call list</h2>
+      <label class="contact-label">Ask for <select id="contactName"><option>Peter</option><option>Anne</option><option>Other</option></select></label>
+      <div id="orderList" class="order-list"></div>
+      <a class="button primary call-button" href="tel:01202679182">Call 01202 679182</a>
+      <a class="alternate-number" href="tel:01202665495">Alternate: 01202 665495</a>
+      <p class="card-reminder">Have your card number ready before calling.</p>
+    </section>
+  </dialog>
+  <dialog id="previewDialog" class="preview-dialog"><button class="icon-button preview-close" data-close="previewDialog" aria-label="Close preview">×</button><img id="largePreview" alt="Selected framed painting preview"><div id="largePreviewCaption"></div></dialog>
   <template id="frameTemplate"><button class="frame-tile"><img loading="lazy"><span class="tile-label"></span><span class="tile-family"></span></button></template>
   <script src="app.js"></script>
 </body>
