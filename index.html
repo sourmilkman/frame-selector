@@ -51,10 +51,16 @@
     <div class="sheet-head"><div><p class="eyebrow">YOUR SHORTLIST</p><h2>Selected frames</h2></div><button class="icon-button" data-close="reviewDialog" aria-label="Close review">×</button></div>
     <div id="reviewEmpty" class="empty-state">Select a framed preview and it will appear here.</div>
     <div id="reviewList" class="review-list"></div>
+    <section id="reviewTotals" class="review-totals" hidden>
+      <div><span>Frames subtotal</span><strong id="subtotal">£0.00</strong></div>
+      <div><span>Standard UK P&amp;P</span><strong id="postage">£5.50</strong></div>
+      <div class="grand-total"><span>Total</span><strong id="grandTotal">£0.00</strong></div>
+      <p>Standard UK P&amp;P applies to most orders. Larger, courier and overseas orders require a supplier quote.</p>
+      <a href="http://www.polymersplus.co.uk/orders/order-terms.php" target="_blank" rel="noopener">Prices and P&amp;P checked 22 August 2026</a>
+    </section>
     <button id="readyToOrder" class="button primary order-button">Ready to order</button>
     <section id="orderPanel" class="order-panel" hidden>
       <p class="eyebrow">PHONE ORDER</p><h2>Your call list</h2>
-      <label class="contact-label">Ask for <select id="contactName"><option>Peter</option><option>Anne</option><option>Other</option></select></label>
       <div id="orderList" class="order-list"></div>
       <a class="button primary call-button" href="tel:01202679182">Call 01202 679182</a>
       <a class="alternate-number" href="tel:01202665495">Alternate: 01202 665495</a>
@@ -63,6 +69,7 @@
   </dialog>
   <dialog id="previewDialog" class="preview-dialog"><button class="icon-button preview-close" data-close="previewDialog" aria-label="Close preview">×</button><img id="largePreview" alt="Selected framed painting preview"><div id="largePreviewCaption"></div></dialog>
   <template id="frameTemplate"><button class="frame-tile"><img loading="lazy"><span class="tile-label"></span><span class="tile-family"></span></button></template>
+  <script src="pricing-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
