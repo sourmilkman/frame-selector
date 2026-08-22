@@ -38,7 +38,11 @@
         <label>Required aperture width <span><input id="apertureWidth" type="number" inputmode="decimal" min="1" step="0.1" placeholder="—"> mm</span></label>
         <label>Required aperture height <span><input id="apertureHeight" type="number" inputmode="decimal" min="1" step="0.1" placeholder="—"> mm</span></label>
       </div>
-      <button class="button primary select-frame" id="selectFrame">Select this frame</button>
+      <label id="frameOptionField" class="selection-option" hidden>Frame option<select id="frameOption"></select></label>
+      <div class="selection-actions">
+        <button class="button lock-button" id="lockImage" type="button" aria-pressed="false" disabled>Lock image in place</button>
+        <button class="button primary select-frame" id="selectFrame">Select this frame</button>
+      </div>
       <p class="selection-note" id="selectionNote" aria-live="polite"></p>
     </section>
 
